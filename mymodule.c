@@ -1271,6 +1271,8 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
+  printf("rate value after the inplace addition:\n");
+  __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_v_rate);
 
   __Pyx_DECREF_SET(__pyx_v_rate, __pyx_t_3);  // same as '__pyx_v_rate = __pyx_t_3' with a garbage collection
   printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
