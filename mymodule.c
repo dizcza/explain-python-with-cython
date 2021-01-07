@@ -1206,7 +1206,8 @@ static PyObject *__pyx_pw_8mymodule_1add_inplace(PyObject *__pyx_self, PyObject 
 }
 
 static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rate) {
-  printf("&rate %p \t &rate_orig %p\n", __pyx_v_rate, __pyx_n_s_rate_orig);
+  printf("# Entered 'add_inplace' function\n");
+  printf("&rate %p \t &rate_orig %p\n\n", __pyx_v_rate, __pyx_n_s_rate_orig);
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1245,6 +1246,7 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
  */
   __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_rate, __pyx_int_20, 20, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
+  printf("\n# After the in-place addition (before assigning to the computed sum)\n");
   printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
 
 
@@ -1266,16 +1268,18 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
   __pyx_t_5 = 0;
   __pyx_t_4 = 0;
+  printf(">>> id(rate), id(rate_orig)\n");
   __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  printf("rate value after the inplace addition:\n");
+  printf(">>> rate\n");
   __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_v_rate);
 
   __Pyx_DECREF_SET(__pyx_v_rate, __pyx_t_3);  // same as '__pyx_v_rate = __pyx_t_3' with a garbage collection
-  printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
+  printf("\n# 'rate += 20' is completed\n");
+  printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
   __pyx_t_3 = 0;
 
   /* "mymodule.py":9
