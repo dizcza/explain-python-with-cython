@@ -1189,7 +1189,6 @@ static PyObject *__pyx_codeobj__2;
  * 
  * def add_inplace(rate):             # <<<<<<<<<<<<<<
  *     print(rate is rate_orig)
- *     id(rate)
  */
 
 /* Python wrapper */
@@ -1207,12 +1206,14 @@ static PyObject *__pyx_pw_8mymodule_1add_inplace(PyObject *__pyx_self, PyObject 
 }
 
 static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rate) {
-  printf("__pyx_v_rate %p \t __pyx_n_s_rate_orig %p\n", __pyx_v_rate, __pyx_n_s_rate_orig);
+  printf("&rate %p \t &rate_orig %p\n", __pyx_v_rate, __pyx_n_s_rate_orig);
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1223,8 +1224,8 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
  * 
  * def add_inplace(rate):
  *     print(rate is rate_orig)             # <<<<<<<<<<<<<<
- *     id(rate)
  *     rate += 20
+ *     print(rate is rate_orig)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_rate_orig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1238,38 +1239,47 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "mymodule.py":8
- * def add_inplace(rate):
  *     print(rate is rate_orig)
- *     id(rate)             # <<<<<<<<<<<<<<
- *     rate += 20
+ *     rate += 20             # <<<<<<<<<<<<<<
  *     print(rate is rate_orig)
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_rate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_rate, __pyx_int_20, 20, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
+
+
+  /*
+   *  print(id(rate), id(rate_orig))             # <<<<<<<<<<<<<<
+   */
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_rate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_rate_orig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
+  __pyx_t_5 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+
+  __Pyx_DECREF_SET(__pyx_v_rate, __pyx_t_3);  // same as '__pyx_v_rate = __pyx_t_3' with a garbage collection
+  printf("&rate %p \t &rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
+  __pyx_t_3 = 0;
 
   /* "mymodule.py":9
  *     print(rate is rate_orig)
- *     id(rate)
- *     rate += 20             # <<<<<<<<<<<<<<
- *     print(rate is rate_orig)
- * 
- */
-  //__Pyx_DECREF_SET(__pyx_n_s_rate_orig, __pyx_v_rate);
-
-  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_rate, __pyx_int_20, 20, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  printf("__pyx_v_rate %p \t __pyx_n_s_rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
-  __Pyx_DECREF_SET(__pyx_v_rate, __pyx_t_3);
-  printf("__pyx_v_rate %p \t __pyx_n_s_rate_orig %p \t __pyx_t_3 %p\n", __pyx_v_rate, __pyx_n_s_rate_orig, __pyx_t_3);
-  __pyx_t_3 = 0;
-
-  /* "mymodule.py":10
- *     id(rate)
  *     rate += 20
  *     print(rate is rate_orig)             # <<<<<<<<<<<<<<
- * 
- * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_rate_orig); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -1287,7 +1297,6 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
  * 
  * def add_inplace(rate):             # <<<<<<<<<<<<<<
  *     print(rate is rate_orig)
- *     id(rate)
  */
 
   /* function exit code */
@@ -1381,7 +1390,6 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * def add_inplace(rate):             # <<<<<<<<<<<<<<
  *     print(rate is rate_orig)
- *     id(rate)
  */
   __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_rate); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
@@ -1685,7 +1693,6 @@ if (!__Pyx_RefNanny) {
  * 
  * def add_inplace(rate):             # <<<<<<<<<<<<<<
  *     print(rate is rate_orig)
- *     id(rate)
  */
   __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mymodule_1add_inplace, 0, __pyx_n_s_add_inplace, NULL, __pyx_n_s_mymodule, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
