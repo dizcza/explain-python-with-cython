@@ -1221,7 +1221,14 @@ static PyObject *__pyx_pf_8mymodule_add_inplace(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_GetModuleGlobalName(__pyx_v_rate_orig, __pyx_n_s_rate_orig); if (unlikely(!__pyx_v_rate_orig)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_v_rate_orig);
   printf("# Entered 'add_inplace' function\n");
-  printf("&rate %p \t &rate_orig %p\n\n", __pyx_v_rate, __pyx_v_rate_orig);
+  printf("&rate %p \t &rate_orig %p\n", __pyx_v_rate, __pyx_v_rate_orig);
+
+  PyObject *__pyx_rate_orig_id = NULL;
+  __pyx_rate_orig_id = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_rate_orig);
+  printf(">>> id(rate_orig)\n");
+  __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_rate_orig_id);
+  __Pyx_DECREF(__pyx_rate_orig_id); __pyx_rate_orig_id = 0;
+  printf("\n");
 
 
   /* "mymodule.py":7
