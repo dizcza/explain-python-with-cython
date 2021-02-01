@@ -2,6 +2,8 @@
 
 Full tutorial on Colab: [link](https://colab.research.google.com/drive/1abuBuRwBdFWbKTQxivA6q5ZUDlgGS9-c?usp=sharing).
 
+## Are inplace Python operations truly inplace?
+
 The following example shows an artefact of Python - a result of Python built-in types (integers and doubles) optimizations.
 
 
@@ -34,9 +36,36 @@ Cython is a nice tool not only to optimize Pyhon code but also to investigate it
 +6:     print(rate is rate_orig)
 ```
 
-Running locally:
+Line 5 is equivalent to the following Python code:
+
+```python
+rate_tmp = rate + 20  # rate_tmp is __pyx_t_1
+rate = rate_tmp
+```
+
+### Running locally
 
 ```bash
 cythonize -ai mymodule.c
 python -c 'import mymodule'
+```
+
+## Deleting an object in Python
+
+`del` command in Python does NOT delete the object.
+
+```python
+def del_example():
+    spiketrain = 2
+    del spiketrain
+```
+
+Cythonizing this function reveals that `del` operator *decrements* the number of references to the object.
+
+```
++1: def del_example():
++2:     spiketrain = 2
++3:     del spiketrain
+  __Pyx_DECREF(__pyx_v_spiketrain);
+  __pyx_v_spiketrain = NULL;
 ```
