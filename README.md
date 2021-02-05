@@ -17,11 +17,14 @@ def add_inplace(rate):
     print(rate is rate_orig)  # prints True
     rate += 20
     print(rate is rate_orig)  # prints False
+
+    
+add_inplace(rate_orig)
 ```
 
 What is going on in `rate += 20` line?
 
-Cython is a nice tool not only to optimize Pyhon code but also to investigate it from the C perspective. Running `cython -a` on the snippet above shows that the in-place addition operation is split into multiple logical instructions.
+Cython is a nice tool not only to optimize Python code but also to investigate it from the C perspective. Running `cython -a` on the snippet above shows that the in-place addition operation is split into multiple logical instructions.
 
 ```
 +1: rate_orig = 12.43
